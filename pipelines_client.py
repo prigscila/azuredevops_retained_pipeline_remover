@@ -48,9 +48,16 @@ class AzurePipelineClient():
         leases_content = json.loads(response.text)
         return leases_content['value']
     
-    def delete_lease(self, id):
-        print(id)
-        
+    def delete_leases(self, ids):
+        headers = get_authorization_header(self.user, self.pat)       
+        params = { 
+            'api-version': self.api_version,
+            'ids': self.__get_comma_separated_ids(ids)
+        }
+        url = f'{self.baseUrl}/_apis/build/retention/leases'
+        response = requests.delete(url, params=params, headers=headers)
+        print(response.status_code)
+            
     def delete_build(self, id):
         print(id)
         

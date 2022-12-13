@@ -31,11 +31,9 @@ class AzurePipelineService():
         if len(leases) == 0:
             return      
         
-        leases_ids = get_property(leases, 'leaseId')
-                
-        for lease_id in leases_ids:
-            print(f'Deleting lease {lease_id}')
-            self.pipelines_client.delete_lease(lease_id)
+        leases_ids = get_property(leases, 'leaseId')                
+        print(f'Deleting leases {leases_ids}')
+        self.pipelines_client.delete_leases(leases_ids)
             
         print(f'Deleted all leases of {id}')
     

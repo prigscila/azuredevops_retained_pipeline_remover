@@ -59,7 +59,11 @@ class AzurePipelineClient():
         print(response.status_code)
             
     def delete_build(self, id):
-        print(id)
+        headers = get_authorization_header(self.user, self.pat)       
+        params = self.__get_default_params()
+        url = f'{self.baseUrl}/_apis/build/builds/{id}'
+        response = requests.delete(url, params=params, headers=headers)
+        print(response.status_code)
         
     def __get_default_params(self):
         return { 'api-version': self.api_version }

@@ -6,10 +6,10 @@ def main():
     load_dotenv()
     pipelines_service = AzurePipelineService()
     
-    # prop = get_prop_to_filter_by()
-    # value = get_prop_value_to_filter_by()    
+    prop = get_prop_to_filter_by()
+    value = get_prop_value_to_filter_by()    
     
-    pipelines = list(pipelines_service.get_pipelines_by_prop_with_initial_value_of())
+    pipelines = list(pipelines_service.get_pipelines_by_prop_with_initial_value_of(prop, value))
     pipelines_ids = get_property(pipelines, 'id')
     pipelines_names = get_property(pipelines, 'name')
     pipelines_names.sort()
@@ -24,17 +24,17 @@ def main():
     print('No pipelines deleted, exiting...')    
 
 def get_prop_to_filter_by():
-    print('Which property should the pipelines be filtered by?')
-    return request_user_input()
+    print('Which property should the pipelines be filtered by? default is "name"')
+    return request_user_input('name')
 
 def get_prop_value_to_filter_by():
-    print('Which value should be used to filter this property?')
-    return request_user_input()
+    print('Which value should be used to filter this property? default is "disabled"')
+    return request_user_input('disabled')
 
-def request_user_input():
+def request_user_input(default):
     user_input = input()
     if not user_input:
-        return None
+        return default
     return user_input
 
 def display_retrieved_pipelines(disabled_pipelines_names):

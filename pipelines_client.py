@@ -55,15 +55,13 @@ class AzurePipelineClient():
             'ids': self.__get_comma_separated_ids(ids)
         }
         url = f'{self.baseUrl}/_apis/build/retention/leases'
-        response = requests.delete(url, params=params, headers=headers)
-        print(response.status_code)
+        requests.delete(url, params=params, headers=headers)
             
     def delete_build(self, id):
         headers = get_authorization_header(self.user, self.pat)       
         params = self.__get_default_params()
         url = f'{self.baseUrl}/_apis/build/builds/{id}'
-        response = requests.delete(url, params=params, headers=headers)
-        print(response.status_code)
+        requests.delete(url, params=params, headers=headers)
         
     def __get_default_params(self):
         return { 'api-version': self.api_version }

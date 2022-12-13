@@ -13,7 +13,6 @@ class AzurePipelineService():
         return filter(lambda pipe: pipe[prop].startswith(name), all_pipelines)
     
     def delete_pipelines_by_ids(self, pipelines_ids):
-        print(pipelines_ids)
         builds_ids = self.__get_builds_ids_for_pipelines(pipelines_ids)
         print(f'Found {len(builds_ids)} builds to remove')
         
@@ -42,4 +41,5 @@ class AzurePipelineService():
     
     def __delete_builds(self, id):
         self.pipelines_client.delete_build(id)
+        print(f'Deleted build')
         

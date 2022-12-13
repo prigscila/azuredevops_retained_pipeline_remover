@@ -16,5 +16,5 @@ In order to use is you must:
 
 The following should be shown:
 
-![carbon](https://user-images.githubusercontent.com/18142156/207431295-e8461f3b-b505-4d60-9a76-c887dcbe52e2.png)
+![carbon](https://user-images.githubusercontent.com/18142156/207431960-f9adf438-2583-4b6c-a94c-b0d9c07cceac.png)
 Image generated with https://carbon.now.sh/
